@@ -68,9 +68,9 @@ function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
   const whiteSauce = document.querySelector('.sauce')
   if (state.whiteSauce) {
-    whiteSauce.style.visibility = 'visible';
+    whiteSauce.classList.add('.sauce-white');
   } else {
-    whiteSauce.style.visibility = 'hidden';
+    whiteSauce.classList.remove('.sauce-white');
   }
 
 }
@@ -79,18 +79,52 @@ function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
   const crust = document.querySelector('.crust')
   if (state.glutenFreeCruste) {
-    crust.style.visibility = 'visible';
+    crust.classList.add('.crust');
   } else {
-    crust.style.visibility = 'hidden';
+    crust.classList.remove('.crust');
   }
 }
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+  const btnPepperoni = document.querySelector('.btn-pepperoni')
+  const btnMushrooms = document.querySelector('.btn-mushrooms')
+  const btnGreenPeppers = document.querySelector('.btn-green-peppers')
+  const btnWhiteSauce = document.querySelector('.btn-sauce')
+  const btnCrust = document.querySelector('btn-crust') 
+
+  btnPepperoni.toggleClass('active');
+  btnMushrooms.toggleClass('active');
+  btnGreenPeppers.toggleClass('active');
+  btnWhiteSauce.toggleClass('active');
+  btnCrust.toggleClass('active');
+  renderPrice()
+  })
+
+ 
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+  const totalPrice = 10;
+  const btnPepperoni = document.querySelector('.btn-pepperoni')
+  const btnMushrooms = document.querySelector('.btn-mushrooms')
+  const btnGreenPeppers = document.querySelector('.btn-green-peppers')
+  const btnWhiteSauce = document.querySelector('.btn-sauce')
+  const btnCrust = document.querySelector('btn-crust') 
+
+  if (btnPepperoni.hasClass('active')) {
+    totalPrice+= this.ingredients.pepperoni.price;
+  } else if (btnMushrooms.hasClass('active')) {
+    totalPrice+= this.ingredients.mushrooms.price;
+  } else if (btnGreenPeppers.hasClass('active')) {
+    totalPrice+= this.ingredients.greenPeppers.price;
+  } else if (btnWhiteSauce.hasClass('active')) {
+    totalPrice+= this.ingredients.whiteSauce.price;
+  } else if (btnCrust.hasClass('active')) {
+    totalPrice+= this.ingredients.glutenFreeCrust.price;
+  }  
+  
 }
 
 renderEverything();
